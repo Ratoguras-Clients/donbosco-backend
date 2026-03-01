@@ -1,0 +1,176 @@
+{
+    "brand": {
+        "icon": "lucide:home",
+        "name": "Dashboard",
+        "route": "management.dashboard"
+    },
+    "menus": [
+        {
+            "id": "dashboard",
+            "title": "Dashboard",
+            "icon": "lucide:home",
+            "tooltip": "Dashboard",
+            "color": "red",
+            "route_pattern": "dashboard",
+            "active_routes": [
+                "management.dashboard"
+            ],
+            "permissions": null,
+            "sections": [
+                {
+                    "title": "Dashboard",
+                    "icon": "lucide:home",
+                    "items": [
+                        {
+                            "title": "Overview",
+                            "icon": "lucide:layout-dashboard",
+                            "route": "management.dashboard",
+                            "permission": null
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "roles",
+            "title": "Roles & Permissions",
+            "icon": "lucide:shield",
+            "tooltip": "Roles & Permissions",
+            "color": "blue",
+            "route_pattern": "roles.",
+            "active_routes": [
+                "roles.index",
+                "roles.create",
+                "roles.show",
+                "roles.edit"
+            ],
+            "permissions": [],
+            "sections": [
+                {
+                    "title": "Role Management",
+                    "icon": "lucide:shield",
+                    "items": [
+                        {
+                            "title": "View All Roles",
+                            "icon": "lucide:list",
+                            "route": "roles.index",
+                            "permission": null
+                        },
+                        {
+                            "title": "Create New Role",
+                            "icon": "lucide:plus-circle",
+                            "route": "roles.create",
+                            "permission": null
+                        }
+                    ]
+                },
+                {
+                    "title": "Quick Access",
+                    "icon": "lucide:zap",
+                    "type": "dynamic_roles",
+                    "dynamic_type": "roles",
+                    "route_template": "roles.show",
+                    "icon_template": "lucide:shield"
+                }
+            ]
+        },
+        {
+            "id": "users",
+            "title": "User Management",
+            "icon": "lucide:users",
+            "tooltip": "Users",
+            "color": "emerald",
+            "route_pattern": "users.",
+            "active_routes": [
+                "management.users.index",
+                "management.users.create",
+                "management.users.show",
+                "management.users.edit",
+                "management.employee.index",
+                "management.employee.create",
+                "management.employee.show",
+                "management.employee.edit"
+            ],
+            "permissions": [],
+            "sections": [
+                {
+                    "title": "User Management",
+                    "icon": "lucide:users",
+                    "items": [
+                        {
+                            "title": "All Users",
+                            "icon": "lucide:users",
+                            "route": "management.users.index",
+                            "permission": null
+                        },
+                        {
+                            "title": "Add New User",
+                            "icon": "lucide:user-plus",
+                            "route": "management.users.create",
+                            "permission": null
+                        }
+                    ]
+                },
+                {
+                    "title": "Employee Management",
+                    "icon": "lucide:users",
+                    "items": [
+                        {
+                            "title": "All Employees",
+                            "icon": "lucide:users",
+                            "route": "management.employee.index",
+                            "permission": null
+                        },
+                        {
+                            "title": "Add New Employee",
+                            "icon": "lucide:user-plus",
+                            "route": "management.employee.create",
+                            "permission": null
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "medias",
+            "title": "Media Management",
+            "icon": "lucide:list",
+            "tooltip": "Medias",
+            "color": "emerald",
+            "route_pattern": "medias.",
+            "active_routes": [
+                "management.medias.index",
+                "management.medias.create",
+                "management.medias.show",
+                "management.medias.edit"
+            ],
+            "permissions": [],
+            "sections": [
+                {
+                    "title": "Media Showcase",
+                    "icon": "lucide:users",
+                    "items": [
+                        {
+                            "title": "All Medias",
+                            "icon": "lucide:users",
+                            "route": "management.media.index",
+                            "permission": ""
+                        }
+                    ]
+                },
+                {
+                    "title": "Sports Showcase",
+                    "icon": "streamline-cyber-color:football",
+                    "items": [
+                        {
+                            "title": "All Sports",
+                            "icon": "streamline-cyber-color:football",
+                            "route": "management.sports.index",
+                            "permission": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

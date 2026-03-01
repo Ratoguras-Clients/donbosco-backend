@@ -1,0 +1,8 @@
+{
+  "brand": {
+    "icon": "lucide:log-out",
+    "name": "Dashboard",
+    "route": "dashboard"
+  },
+  "menus": []
+}

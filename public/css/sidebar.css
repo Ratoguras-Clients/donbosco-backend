@@ -1,0 +1,107 @@
+/* Mobile sidebar styles */
+@media (max-width: 768px) {
+    .sidebar-container {
+        position: fixed !important;
+        left: -100%;
+        transition: left 0.3s ease;
+        z-index: 50;
+    }
+
+    .sidebar-container.active {
+        left: 0;
+    }
+
+    /* Ensure the full sidebar is visible on mobile when active */
+    .sidebar-container.active .full-sidebar.w-56 {
+        width: 14rem !important;
+        display: block;
+    }
+
+    /* Mobile overlay */
+    #mobileSidebarOverlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 40;
+    }
+
+    #mobileSidebarOverlay.active {
+        display: block;
+    }
+}
+
+/* Mobile toggle button */
+#mobileMenuToggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    #mobileMenuToggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+
+/* Tooltip styles */
+.tooltip {
+    position: relative;
+}
+
+.tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+    z-index: 100;
+}
+
+.tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Hide tooltips on mobile or when sidebar is expanded */
+@media (max-width: 768px) {
+    .tooltip::after {
+        display: none;
+    }
+}
+
+/* Hide tooltips when full sidebar is visible */
+.full-sidebar.w-56~.icon-sidebar .tooltip::after {
+    display: none;
+}
+
+
+/* Sidebar styles */
+.sidebar-container {
+    /* position: sticky; */
+}
+
+
+.icon-sidebar {
+    z-index: 20;
+}
+
+.full-sidebar {
+    z-index: 10;
+}
+
+/* Ensure content doesn't overflow */
+.menu-content {
+    width: 14rem;
+}
