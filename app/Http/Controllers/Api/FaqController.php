@@ -31,6 +31,7 @@ class FaqController extends Controller
         $page = $request->query('page', 1);
 
         $faqs = Faq::where('organization_id', $organization_id)
+            ->where('is_active', true)
             ->orderBy('id', 'asc')
             ->paginate($perPage, ['*'], 'page', $page);
 

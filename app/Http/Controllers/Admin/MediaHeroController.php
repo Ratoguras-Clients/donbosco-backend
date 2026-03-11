@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\MediaHero;
 use App\Models\Organization;
+use App\Traits\RevalidatesNextJs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class MediaHeroController extends Controller
 {
+    use RevalidatesNextJs;
 
     // Decide create or edit automatically (1 hero per organization)
     public function mediahero($slug)
@@ -53,6 +55,10 @@ class MediaHeroController extends Controller
             'created_by'      => Auth::id(),
         ]);
 
+        $this->revalidatePaths([
+            '/media',
+        ]);
+
         return redirect()
             ->route('dashboard', $organization->slug)
             ->with('success', 'Media Hero created successfully.');
@@ -84,6 +90,10 @@ class MediaHeroController extends Controller
             'content'    => $validated['content'] ?? null,
             'is_home'    => $request->boolean('is_home'),
             'updated_by' => Auth::id(),
+        ]);
+
+        $this->revalidatePaths([
+            '/media',
         ]);
 
         $message = 'Media Hero updated successfully.';

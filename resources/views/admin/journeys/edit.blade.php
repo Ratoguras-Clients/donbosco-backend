@@ -82,7 +82,7 @@
                         @enderror
                     </div>
 
-                    <div>
+                    {{-- <div>
                         <label for="end_date" class="block text-sm font-medium text-gray-700 mb-1 dark:text-slate-100">
                             End Date
                         </label>
@@ -97,7 +97,7 @@
                         @error('end_date')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                         @enderror
-                    </div>
+                    </div> --}}
                 </div>
 
                 <!-- Active -->
@@ -108,8 +108,8 @@
                     <label class="ml-2 text-sm text-gray-700">Active</label>
                 </div>
 
-                <!-- Cover Images -->
-                <div class="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 mb-6">
+
+                {{-- <div class="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 mb-6">
                     <h3 class="text-lg font-medium text-gray-800 mb-4 flex items-center">
                         <span class="iconify mr-2" data-icon="tabler:photo" data-width="20"></span>
                         Cover Images
@@ -117,14 +117,14 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                        {{-- Cover Image 1 --}}
+                     
                         <div>
                             <p class="text-sm font-medium text-gray-700 mb-2">Cover Image 1</p>
                             <div class="flex flex-col items-center justify-center p-4 border border-dashed border-gray-300 rounded-md">
                                 <input type="hidden" name="media_id" id="media_id"
                                     value="{{ old('media_id', $journey->media_id) }}">
 
-                                {{-- Show existing DB image on load --}}
+                           
                                 <div id="image-preview-1" class="mb-4 w-full">
                                     @if ($journey->media)
                                         <div class="relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg shadow-sm overflow-hidden">
@@ -163,14 +163,14 @@
                             @enderror
                         </div>
 
-                        {{-- Cover Image 2 --}}
+                       
                         <div>
                             <p class="text-sm font-medium text-gray-700 mb-2">Cover Image 2</p>
                             <div class="flex flex-col items-center justify-center p-4 border border-dashed border-gray-300 rounded-md">
                                 <input type="hidden" name="media_id_2" id="media_id_2"
                                     value="{{ old('media_id_2', $journey->media_id_2) }}">
 
-                                {{-- Show existing DB image on load --}}
+                               
                                 <div id="image-preview-2" class="mb-4 w-full">
                                     @if ($journey->media2)
                                         <div class="relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg shadow-sm overflow-hidden">
@@ -210,7 +210,7 @@
                         </div>
 
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <!-- Form Actions -->
@@ -237,9 +237,8 @@
     </div>
 
     {{-- Single picker shared between both slots --}}
-    <x-media-piker modalId="featured-image-media-picker" title="Select Cover Image"
-        :allowMultiple="false" :allowUpload="true" :allowView="true"
-        triggerSelector=".select-image-btn" onSelect="handleImageSelection"
+    <x-media-piker modalId="featured-image-media-picker" title="Select Cover Image" :allowMultiple="false" :allowUpload="true"
+        :allowView="true" triggerSelector=".select-image-btn" onSelect="handleImageSelection"
         acceptedTypes="image/jpeg,image/jpg,image/png,image/gif,image/webp,image/svg+xml" maxFileSize="10MB" />
 @endsection
 
@@ -249,7 +248,7 @@
         let currentImageNumber = null;
 
         // Open picker and remember which slot was clicked
-        $(document).on('click', '.select-image-btn', function () {
+        $(document).on('click', '.select-image-btn', function() {
             currentImageNumber = $(this).data('image-number');
             if (window.featuredImagePicker) {
                 window.featuredImagePicker.open();
@@ -262,7 +261,7 @@
         }
 
         // Callback from media picker
-        window.handleImageSelection = function (mediaId, picker) {
+        window.handleImageSelection = function(mediaId, picker) {
             if (!mediaId || !currentImageNumber) return;
 
             const mediaUrl = $(`#${picker.modalId}-grid .media-item[data-media-id="${mediaId}"]`).data('media-url');
@@ -297,7 +296,7 @@
         };
 
         // Remove via main button
-        $(document).on('click', '.remove-image-btn', function () {
+        $(document).on('click', '.remove-image-btn', function() {
             const num = $(this).data('image-number');
             $(`#${getInputId(num)}`).val('');
             $(`#image-preview-${num}`).empty();
@@ -305,7 +304,7 @@
         });
 
         // Remove via inline button inside preview
-        $(document).on('click', '.remove-image-inline', function () {
+        $(document).on('click', '.remove-image-inline', function() {
             const num = $(this).data('image-number');
             $(`#${getInputId(num)}`).val('');
             $(`#image-preview-${num}`).empty();
@@ -322,25 +321,30 @@
         }
 
         // Date pickers
-        $(function () {
+        $(function() {
             $('#start_date').daterangepicker({
                 singleDatePicker: true,
                 autoApply: true,
-                locale: { format: 'YYYY-MM-DD' }
+                locale: {
+                    format: 'YYYY-MM-DD'
+                }
             });
 
             $('#end_date').daterangepicker({
                 singleDatePicker: true,
                 autoApply: true,
                 autoUpdateInput: false,
-                locale: { format: 'YYYY-MM-DD', cancelLabel: 'Clear' }
+                locale: {
+                    format: 'YYYY-MM-DD',
+                    cancelLabel: 'Clear'
+                }
             });
 
-            $('#end_date').on('apply.daterangepicker', function (ev, picker) {
+            $('#end_date').on('apply.daterangepicker', function(ev, picker) {
                 $(this).val(picker.startDate.format('YYYY-MM-DD'));
             });
 
-            $('#end_date').on('cancel.daterangepicker', function () {
+            $('#end_date').on('cancel.daterangepicker', function() {
                 $(this).val('');
             });
         });

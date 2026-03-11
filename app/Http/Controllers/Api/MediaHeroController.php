@@ -26,10 +26,11 @@ class MediaHeroController extends Controller
 
         return response()->json([
             'data' => [
-                'id'      => $mediahero->id,
-                'title'   => $mediahero->title,
-                'content' => $mediahero->content,
-                'is_home' => $mediahero->is_home,
+                'id'       => $mediahero->id,
+                'title'    => $mediahero->title,
+                'subtitle' => $mediahero->content,
+                'content'  => $mediahero->content,
+                'is_home'  => $mediahero->is_home,
             ],
         ]);
     }

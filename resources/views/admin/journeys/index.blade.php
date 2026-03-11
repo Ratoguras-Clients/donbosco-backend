@@ -37,8 +37,7 @@
                             <th width="200">Title</th>
                             <th width="150">Description</th>
                             <th width="100">Status</th>
-                            <th width="150">Start data</th>
-                            <th width="150">End data</th>
+                            <th width="150">Start Date</th>
                             <th width="100">Created By</th>
                             <th width="100">Actions</th>
                         </tr>
@@ -169,18 +168,6 @@
                                 </div>`;
                         },
                         "name": "start_date",
-                        "orderable": false
-                    },
-                    {
-                        "data": function(row) {
-                            return `
-                                <div class="flex items-center">
-                                    <span class="font-semibold">${row.end_date}</span>
-                                    
-
-                                </div>`;
-                        },
-                        "name": "end_date",
                         "orderable": false
                     },
                     {

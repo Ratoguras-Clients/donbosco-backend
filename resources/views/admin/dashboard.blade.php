@@ -92,7 +92,7 @@
 
             @php
                 $engagementActions = [
-                    ['label' => 'Services', 'url' => route('services.index', $activeOrganization->slug)],
+                    //  ['label' => 'Services', 'url' => route('services.index', $activeOrganization->slug)],
                     ['label' => 'Journeys', 'url' => route('journeys.index', $activeOrganization->slug)],
                     ['label' => 'Collections', 'url' => route('collections.index', $activeOrganization->slug)],
                 ];
@@ -102,7 +102,7 @@
                 class="hub-trigger flex flex-col items-center justify-center w-full p-6 border-2 border-dashed border-gray-300 rounded-lg text-gray-600 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50 transition group"
                 data-title="Engagement" data-actions="{{ json_encode($engagementActions) }}">
                 <span class="block text-lg font-bold group-hover:text-blue-600 transition">Engagement</span>
-                <span class="text-sm text-gray-400">Manage Services, Journeys, Collections</span>
+                <span class="text-sm text-gray-400">Manage Journeys, Collections</span>
             </button>
 
             @php
@@ -181,7 +181,7 @@
                     <span class="text-sm text-gray-400">Manage About Hero,About Story</span>
                 </button>
 
-                @php
+                {{-- @php
                     $newsactions = [
                         ['label' => 'News Hero', 'url' => route('newsandnotice.newshero', $activeOrganization->slug)],
                     ];
@@ -194,8 +194,8 @@
                         News and Notices
                     </span>
                     <span class="text-sm text-gray-400">Manage News Hero</span>
-                </button>
-                @php
+                </button> --}}
+                {{-- @php
                     $organizationactions = [
                         [
                             'label' => 'Organization Hero',
@@ -216,7 +216,7 @@
                         Hero Section
                     </span>
 
-                </button>
+                </button> --}}
 
 
                 @php
@@ -258,7 +258,7 @@
                     <span class="text-sm text-gray-400">Manage Team Hero</span>
                 </button>
 
-                @php
+                {{-- @php
                     $messageactions = [
                         ['label' => 'Message Hero', 'url' => route('messagehero', $activeOrganization->slug)],
                     ];
@@ -286,7 +286,7 @@
                         Sister Hero
                     </span>
                     <span class="text-sm text-gray-400">Manage Sister Hero</span>
-                </button>
+                </button> --}}
             </div>
         </section>
     @endif
