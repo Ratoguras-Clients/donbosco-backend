@@ -14,12 +14,12 @@ class OrganizationSeeder extends Seeder
     public function run(): void
     {
         $cni = Organization::updateOrCreate(
-            ['slug' => 'cni'],
+            ['slug' => 'dbs'],
             [
                 'parent_organization_id' => null,
-                'name' => 'Confederation of Nepalese Industries',
-                'short_name' => 'CNI',
-                'description' => 'CNI is the umbrella organization representing industries and businesses of Nepal.',
+                'name' => 'Don Bosco School',
+                'short_name' => 'DBS',
+                'description' => 'Dons Bosco School is an educational institution that provides quality education and holistic development to students, fostering a nurturing environment for learning and growth.',
                 'logo' => null,
                 'established_date' => '2015-01-01',
                 'status' => 'active',
@@ -31,19 +31,19 @@ class OrganizationSeeder extends Seeder
         /**
          * Sister Organization: CNIYEF
          */
-        Organization::updateOrCreate(
-            ['slug' => 'cniyef'],
-            [
-                'parent_organization_id' => $cni->id,
-                'name' => 'CNI Young Entrepreneurs Forum',
-                'short_name' => 'CNIYEF',
-                'description' => 'CNIYEF is a platform under CNI that empowers young entrepreneurs through leadership, innovation, and business networking.',
-                'logo' => null,
-                'established_date' => '2016-01-01',
-                'status' => 'active',
-                'created_by' => 1,
-                'updated_by' => 1,
-            ]
-        );
+        // Organization::updateOrCreate(
+        //     ['slug' => 'cniyef'],
+        //     [
+        //         'parent_organization_id' => $cni->id,
+        //         'name' => 'CNI Young Entrepreneurs Forum',
+        //         'short_name' => 'CNIYEF',
+        //         'description' => 'CNIYEF is a platform under CNI that empowers young entrepreneurs through leadership, innovation, and business networking.',
+        //         'logo' => null,
+        //         'established_date' => '2016-01-01',
+        //         'status' => 'active',
+        //         'created_by' => 1,
+        //         'updated_by' => 1,
+        //     ]
+        // );
     }
 }
