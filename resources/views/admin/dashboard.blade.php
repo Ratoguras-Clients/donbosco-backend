@@ -259,12 +259,12 @@
                 </button>
 
                   @php
-                    // $admissionactions = [['label' => 'Admission', 'url' => route('admission', $activeOrganization->slug)]];
+                     $admissionactions = [['label' => 'Admission & Fee Settings', 'url' => route('admission-fee-settings.index', $activeOrganization->slug)]];
                 @endphp
 
                 <button type="button"
                     class="hub-trigger flex flex-col items-center justify-center w-full p-6 border-2 border-dashed border-gray-300 rounded-lg text-gray-600 hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50 transition group"
-                    data-title="Admission" data-actions="{{ json_encode($teamactions) }}">
+                    data-title="Admission" data-actions="{{ json_encode($admissionactions) }}">
                     <span class="00000000block text-lg font-bold group-hover:text-blue-600 transition">
                         Admission
                     </span>

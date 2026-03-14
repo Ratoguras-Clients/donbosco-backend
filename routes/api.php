@@ -94,3 +94,7 @@ Route::prefix('/contact')->group(function () {
     Route::post('/', [App\Http\Controllers\Api\ContactController::class, 'store']);
 });
 Route::get('/organization/all', [App\Http\Controllers\Api\OrganizationController::class, 'all']);
+
+Route::prefix('/admission-fee-settings')->group(function () {
+    Route::get('/{organization_id?}', [App\Http\Controllers\Api\AdmissionFeeSettingController::class, 'index']);
+});

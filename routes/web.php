@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\FaqHeroController;
 use App\Http\Controllers\Admin\TeamHeroController;
 use App\Http\Controllers\Admin\MessageHeroController;
 use App\Http\Controllers\Admin\SisterHeroController;
+use App\Http\Controllers\Admin\AdmissionFeeSettingController;
 
 use App\Http\Controllers\WelcomeController;
 use App\Models\Organization;
@@ -361,6 +362,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::put('/update/{id}', [SisterHeroController::class, 'updatesisterhero'])
             ->name('sisterhero.update');
     });
+
+    // Admission & Fee Settings
+    Route::get('/admission-fee-settings/{slug}', [AdmissionFeeSettingController::class, 'index'])->name('admission-fee-settings.index');
+    Route::post('/admission-fee-settings/{slug}/store', [AdmissionFeeSettingController::class, 'store'])->name('admission-fee-settings.store');
+    Route::delete('/admission-fee-settings/{id}', [AdmissionFeeSettingController::class, 'destroy'])->name('admission-fee-settings.destroy');
 });
 
 require __DIR__ . '/auth.php';
