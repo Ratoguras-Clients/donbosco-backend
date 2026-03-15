@@ -125,14 +125,6 @@
                     </label>
                 </div>
 
-                <div class="flex items-center">
-                    <input type="checkbox" name="is_home" id="is_home" value="1"
-                        {{ old('is_home', $event->is_home) ? 'checked' : '' }}
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                    <label for="is_home" class="ml-2 text-sm font-medium text-gray-700">
-                        Feature on homepage
-                    </label>
-                </div>
             </div>
 
             <!-- Cover Image Upload -->

@@ -18,7 +18,9 @@ class MessageHeroController extends Controller
             $organization_id = $organization->id;
         }
 
-        $messagehero = MessageHero::where('organization_id', $organization_id)->first();
+        $messagehero = MessageHero::where('organization_id', $organization_id)
+            ->where('is_home', true)
+            ->first();
 
         if (!$messagehero) {
             return response()->json(['data' => null, 'message' => 'Message Hero not found.'], 404);
@@ -26,8 +28,8 @@ class MessageHeroController extends Controller
 
         return response()->json([
             'data' => [
-                'id'      => $messagehero->id,
-                'title'   => $messagehero->title,
+                'id' => $messagehero->id,
+                'title' => $messagehero->title,
                 'content' => $messagehero->content,
                 'is_home' => $messagehero->is_home,
             ],

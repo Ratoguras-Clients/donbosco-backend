@@ -16,8 +16,8 @@
                     <i class="fas fa-folder text-white text-md"></i>
                 </div>
                 <div class="header-text">
-                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white">Events Role Management</h4>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">Manage all Events Role in the system</p>
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white">Events  Management</h4>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Manage all Events in the system</p>
                 </div>
             </div>
             <div class="mt-4 md:mt-0 flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">

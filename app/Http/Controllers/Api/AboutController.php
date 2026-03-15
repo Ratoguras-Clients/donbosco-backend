@@ -33,6 +33,7 @@ class AboutController extends Controller
         $page = $request->query('page', 1);
 
         $aboutheros = Abouthero::where('organization_id', $organization_id)
+            ->where('is_home', true)
             ->orderBy('id', 'asc')
             ->paginate($perPage, ['*'], 'page', $page);
 
@@ -42,8 +43,8 @@ class AboutController extends Controller
         return response()->json([
             'data' => collect($aboutheros->items())->map(function ($abouthero) {
                 return [
-                    'id'      => $abouthero->id,
-                    'title'   => $abouthero->title,
+                    'id' => $abouthero->id,
+                    'title' => $abouthero->title,
                     'content' => $abouthero->content,
                     'is_home' => $abouthero->is_home,
                 ];
@@ -82,6 +83,7 @@ class AboutController extends Controller
 
         $aboutstories = Aboutstory::with(['media1', 'media2', 'media3'])
             ->where('organization_id', $organization_id)
+            ->where('is_home', 1)
             ->orderBy('id', 'asc')
             ->paginate($perPage, ['*'], 'page', $page);
 
@@ -91,14 +93,14 @@ class AboutController extends Controller
         return response()->json([
             'data' => collect($aboutstories->items())->map(function ($aboutstory) {
                 return [
-                    'id'       => $aboutstory->id,
-                    'title'    => $aboutstory->title,
-                    'content'  => $aboutstory->content,
+                    'id' => $aboutstory->id,
+                    'title' => $aboutstory->title,
+                    'content' => $aboutstory->content,
                     'features' => $aboutstory->features,
-                    'image_1'  => $aboutstory->media1?->url,
-                    'image_2'  => $aboutstory->media2?->url,
-                    'image_3'  => $aboutstory->media3?->url,
-                    'is_home'  => $aboutstory->is_home,
+                    'image_1' => $aboutstory->media1?->url,
+                    'image_2' => $aboutstory->media2?->url,
+                    'image_3' => $aboutstory->media3?->url,
+                    'is_home' => $aboutstory->is_home,
                 ];
             }),
             // 'total'        => $aboutstories->total(),

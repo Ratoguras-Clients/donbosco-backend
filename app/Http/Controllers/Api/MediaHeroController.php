@@ -18,7 +18,9 @@ class MediaHeroController extends Controller
             $organization_id = $organization->id;
         }
 
-        $mediahero = MediaHero::where('organization_id', $organization_id)->first();
+        $mediahero = MediaHero::where('organization_id', $organization_id)
+            ->where('is_home', true)
+            ->first();
 
         if (!$mediahero) {
             return response()->json(['data' => null, 'message' => 'Media Hero not found.'], 404);

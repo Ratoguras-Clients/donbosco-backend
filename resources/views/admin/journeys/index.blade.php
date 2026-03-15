@@ -140,8 +140,7 @@
                         "data": function(row) {
                             return `
                                 <div class="flex items-center">
-                                    <span class="font-semibold">${row.description}</span>
-
+                                    <span class="font-semibold truncate block max-w-xs" title="${row.description || ''}">${row.description || ''}</span>
                                 </div>`;
                         },
                         "name": "description",

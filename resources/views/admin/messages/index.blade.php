@@ -5,10 +5,6 @@
         'breadcrumbs' => [['title' => 'Messages', 'url' => null]],
     ])
 
-    @if (session('success'))
-        <div id="success-message" data-message="{{ session('success') }}" class="hidden"></div>
-    @endif
-
     <!-- DataTable -->
     <div class="premium-card bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700">
         <div

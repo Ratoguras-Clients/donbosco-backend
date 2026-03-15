@@ -18,7 +18,8 @@ class FaqHeroController extends Controller
             $organization_id = $organization->id;
         }
 
-        $faqhero = FaqHero::where('organization_id', $organization_id)->first();
+        $faqhero = FaqHero::where('organization_id', $organization_id)->where('is_home', true)
+            ->first();
 
         if (!$faqhero) {
             return response()->json(['data' => null, 'message' => 'FAQ Hero not found.'], 404);
@@ -26,8 +27,8 @@ class FaqHeroController extends Controller
 
         return response()->json([
             'data' => [
-                'id'      => $faqhero->id,
-                'title'   => $faqhero->title,
+                'id' => $faqhero->id,
+                'title' => $faqhero->title,
                 'content' => $faqhero->content,
                 'is_home' => $faqhero->is_home,
             ],

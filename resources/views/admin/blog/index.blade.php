@@ -17,7 +17,7 @@
                     <i class="fas fa-folder text-white text-md"></i>
                 </div>
                 <div class="header-text">
-                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white">Blog Role Management</h4>
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white">Blog Management</h4>
                     <p class="text-sm text-gray-500 dark:text-gray-400">Manage all blogs in the system</p>
                 </div>
             </div>
