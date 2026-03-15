@@ -20,6 +20,7 @@ class HomemissionController extends Controller
 
         $homemission = Homemission::with(['media1', 'media2', 'media3'])
             ->where('organization_id', $organization_id)
+            ->where('is_home', 1)
             ->first();
 
         if (!$homemission) {

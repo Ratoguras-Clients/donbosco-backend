@@ -34,6 +34,7 @@ class MessageController extends Controller
             ->where('organization_id', $organization_id)
             ->where('is_active', 1)
             ->orderBy('id', 'asc')
+            
             ->paginate($perPage, ['*'], 'page', $page);
 
         $start = ($messages->currentPage() - 1) * $messages->perPage() + 1;

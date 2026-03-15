@@ -18,7 +18,7 @@ class TeamHeroController extends Controller
             $organization_id = $organization->id;
         }
 
-        $teamhero = TeamHero::where('organization_id', $organization_id)->first();
+        $teamhero = TeamHero::where('organization_id', $organization_id)->where('is_home', 1)->first();
 
         if (!$teamhero) {
             return response()->json(['data' => null, 'message' => 'Team Hero not found.'], 404);
@@ -26,8 +26,8 @@ class TeamHeroController extends Controller
 
         return response()->json([
             'data' => [
-                'id'      => $teamhero->id,
-                'title'   => $teamhero->title,
+                'id' => $teamhero->id,
+                'title' => $teamhero->title,
                 'content' => $teamhero->content,
                 'is_home' => $teamhero->is_home,
             ],
