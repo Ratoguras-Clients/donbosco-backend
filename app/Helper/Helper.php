@@ -126,7 +126,7 @@ class Helper
 
         if ($moduleConfigPath && file_exists($moduleConfigPath)) {
             $json = file_get_contents($moduleConfigPath);
-        } elseif (file_exists($defaultConfigPath) && $subdomain === null) {
+        } elseif (file_exists($defaultConfigPath)) {
             $json = file_get_contents($defaultConfigPath);
         } else {
             $json = file_get_contents(resource_path('json/nojson.json'));
