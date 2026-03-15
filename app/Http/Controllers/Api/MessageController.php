@@ -32,6 +32,7 @@ class MessageController extends Controller
 
         $messages = Message::with(['organizationStaff.media', 'organizationStaff.organizationStaffRole.staffRole'])
             ->where('organization_id', $organization_id)
+            ->where('is_active', 1)
             ->orderBy('id', 'asc')
             ->paginate($perPage, ['*'], 'page', $page);
 
