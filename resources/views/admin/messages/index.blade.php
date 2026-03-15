@@ -79,7 +79,6 @@
         </div>
     </div>
 @endsection
-</button>
 
 @push('modals')
 @endpush
@@ -143,14 +142,18 @@
                     },
                     {
                         "data": function(row) {
-                            // Strip HTML tags and truncate to 80 characters
-                            var plainText = $('<div>').html(row.content).text();
-                            var truncated = plainText.length > 30 ? plainText.substring(0, 30) +
-                                '...' : plainText;
+                            // Safely strip HTML tags using DOMParser and truncate to 30 characters
+                            var doc = new DOMParser().parseFromString(row.content || '', 'text/html');
+                            var plainText = doc.body.textContent || '';
+                            var truncated = plainText.length > 30 ? plainText.substring(0, 30) + '...' : plainText;
+                            
+                            // Escape quotes to prevent breaking the title attribute
+                            var safeTitle = plainText.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+                            
                             return `
-            <div class="flex items-center">
-                <span class="font-semibold" title="${plainText}">${truncated}</span>
-            </div>`;
+                                <div class="flex items-center">
+                                    <span class="font-semibold" title="${safeTitle}">${truncated}</span>
+                                </div>`;
                         },
                         "name": "content",
                         "orderable": false
@@ -325,10 +328,10 @@
                 var id = $(this).data('id');
 
                 nepalConfirm.show({
-                    title: 'Delete Staff Role',
-                    message: `Are you sure you want to delete this staff role? This action cannot be undone.`,
+                    title: 'Delete Message',
+                    message: `Are you sure you want to delete this message? This action cannot be undone.`,
                     type: 'danger',
-                    confirmText: 'Delete Staff Role',
+                    confirmText: 'Delete Message',
                     cancelText: 'Cancel',
                     confirmIcon: '<i class="fas fa-trash w-4.5 h-4.5"></i>'
                 }).then(() => {
@@ -341,7 +344,7 @@
                         },
                         success: function(response) {
                             nepalToast.success('Success', response.message ||
-                                'Staff role deleted successfully!');
+                                'Message deleted successfully!');
                             table_listing_table.ajax.reload();
                         },
                         error: function(xhr) {
@@ -350,7 +353,7 @@
                         }
                     });
                 }).catch(() => {
-                    nepalToast.info('Action Canceled', 'Staff role deletion was canceled.');
+                    nepalToast.info('Action Canceled', 'Message deletion was canceled.');
                 });
             });
         });

@@ -138,9 +138,10 @@
                     },
                     {
                         "data": function(row) {
+                            var safeDesc = (row.description || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
                             return `
                                 <div class="flex items-center">
-                                    <span class="font-semibold truncate block max-w-xs" title="${row.description || ''}">${row.description || ''}</span>
+                                    <span class="font-semibold truncate block max-w-xs" title="${safeDesc}">${row.description || ''}</span>
                                 </div>`;
                         },
                         "name": "description",
@@ -317,10 +318,10 @@
                 var id = $(this).data('id');
 
                 nepalConfirm.show({
-                    title: 'Delete Staff Role',
-                    message: `Are you sure you want to delete this staff role? This action cannot be undone.`,
+                    title: 'Delete Journey',
+                    message: `Are you sure you want to delete this journey? This action cannot be undone.`,
                     type: 'danger',
-                    confirmText: 'Delete Staff Role',
+                    confirmText: 'Delete Journey',
                     cancelText: 'Cancel',
                     confirmIcon: '<i class="fas fa-trash w-4.5 h-4.5"></i>'
                 }).then(() => {
@@ -333,7 +334,7 @@
                         },
                         success: function(response) {
                             nepalToast.success('Success', response.message ||
-                                'Staff role deleted successfully!');
+                                'Journey deleted successfully!');
                             table_listing_table.ajax.reload();
                         },
                         error: function(xhr) {
@@ -342,7 +343,7 @@
                         }
                     });
                 }).catch(() => {
-                    nepalToast.info('Action Canceled', 'Staff role deletion was canceled.');
+                    nepalToast.info('Action Canceled', 'Journey deletion was canceled.');
                 });
             });
         });

@@ -49,13 +49,13 @@ class AboutController extends Controller
                     'is_home' => $abouthero->is_home,
                 ];
             }),
-            // 'total'        => $aboutheros->total(),
-            // 'per_page'     => $aboutheros->perPage(),
-            // 'current_page' => $aboutheros->currentPage(),
-            // 'last_page'    => $aboutheros->lastPage(),
-            // 'start'        => $start,
-            // 'offset'       => $offset,
-            // 'count'        => count($aboutheros->items()),
+            'total'        => $aboutheros->total(),
+            'per_page'     => $aboutheros->perPage(),
+            'current_page' => $aboutheros->currentPage(),
+            'last_page'    => $aboutheros->lastPage(),
+            'start'        => $start,
+            'offset'       => $offset,
+            'count'        => count($aboutheros->items()),
         ]);
     }
 
@@ -103,13 +103,13 @@ class AboutController extends Controller
                     'is_home' => $aboutstory->is_home,
                 ];
             }),
-            // 'total'        => $aboutstories->total(),
-            // 'per_page'     => $aboutstories->perPage(),
-            // 'current_page' => $aboutstories->currentPage(),
-            // 'last_page'    => $aboutstories->lastPage(),
-            // 'start'        => $start,
-            // 'offset'       => $offset,
-            // 'count'        => count($aboutstories->items()),
+            'total'        => $aboutstories->total(),
+            'per_page'     => $aboutstories->perPage(),
+            'current_page' => $aboutstories->currentPage(),
+            'last_page'    => $aboutstories->lastPage(),
+            'start'        => $start,
+            'offset'       => $offset,
+            'count'        => count($aboutstories->items()),
         ]);
     }
 }
